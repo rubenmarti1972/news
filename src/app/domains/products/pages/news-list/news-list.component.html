@@ -1,0 +1,16 @@
+<div class="flex mt-5 flex-col md:flex-row md:space-x-4">
+  <div class="w-full mb-4 md:w-56">
+    <ul class="text-center md:text-left">
+      <li class="flex items-center gap-2 justify-center md:justify-start">
+        <i class="fas fa-newspaper text-[#800000]"></i>
+        <a routerLink="/">All News</a>
+      </li>
+      <!-- Aquí puedes agregar más filtros si los necesitas -->
+    </ul>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div *ngFor="let newsItem of news">
+      <app-card [news]="newsItem"></app-card> <!-- Pasa cada noticia al componente NewsCard -->
+    </div>
+  </div>
+</div>

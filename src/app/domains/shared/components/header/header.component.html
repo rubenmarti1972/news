@@ -1,0 +1,72 @@
+<nav>
+  <div class="w-full flex items-center justify-between mx-auto py-4 bg-[#800000] text-white">
+    <!-- Logo Section -->
+    <div class="flex items-center">
+      <!-- Menu Toggle for Mobile -->
+      <button (click)="toggleMenu()" data-collapse-toggle="navbar-default" type="button"
+        class="mr-4 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+
+      <!-- Logo Image with Red Color (light red) -->
+      <a href="/" class="flex items-center mr-10">
+        <img src="/assets/logo.png" class="h-16 filter hue-rotate-0 saturate-300" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- Menu Section (Mobile and Desktop) -->
+    <div class="md:flex items-center space-x-6 hidden md:block">
+      <!-- Menu for desktop (this part will be hidden on mobile) -->
+      <ul class="flex space-x-6">
+        <li>
+          <a routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true }"
+             class="block hover:underline text-white" aria-current="page">News</a>
+        </li>
+        <li>
+          <a routerLink="/about" routerLinkActive="underline" class="block hover:underline text-white">Politic</a>
+        </li>
+        <li>
+          <a routerLink="/locations" routerLinkActive="underline" class="block hover:underline text-white">Economy</a>
+        </li>
+        <li>
+          <a routerLink="/services" routerLinkActive="underline" class="block hover:underline text-white">Sports</a>
+        </li>
+        <li>
+          <a routerLink="/carga" routerLinkActive="underline" class="block hover:underline text-white">Art and Shows</a>
+        </li>
+      </ul>
+      <!-- Search Component -->
+      <app-search />
+    </div>
+
+    <!-- Mobile Dropdown Menu (only visible when the menu is toggled) -->
+    <div class="bg-[#800000] text-white flex-col items-center border border-gray-700 rounded-lg shadow-lg shadow-gray-900/40 absolute top-16 left-3 p-4 md:relative md:top-0 md:left-0 md:flex md:flex-row md:space-x-4 md:border-none md:p-0"
+         *ngIf="showMenu()"> <!-- Use ngIf to display menu only when toggled -->
+      <ul class="flex flex-col space-y-4 mb-4 md:flex-row md:space-y-0 md:space-x-4 md:mb-0">
+        <li>
+          <a routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true }"
+             class="block hover:underline text-white" aria-current="page">News</a>
+        </li>
+        <li>
+          <a routerLink="/about" routerLinkActive="underline" class="block hover:underline text-white">Politic</a>
+        </li>
+        <li>
+          <a routerLink="/locations" routerLinkActive="underline" class="block hover:underline text-white">Economy</a>
+        </li>
+        <li>
+          <a routerLink="/services" routerLinkActive="underline" class="block hover:underline text-white">Sports</a>
+        </li>
+        <li>
+          <a routerLink="/carga" routerLinkActive="underline" class="block hover:underline text-white">Art and Shows</a>
+        </li>
+      </ul>
+      <!-- Search Component for mobile version -->
+      <app-search />
+    </div>
+  </div>
+</nav>

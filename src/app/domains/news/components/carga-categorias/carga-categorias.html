@@ -1,0 +1,54 @@
+<form (ngSubmit)="addCategory()" #categoryForm="ngForm" class="space-y-4 p-4">
+  <!-- Selección de Departamento -->
+  <div>
+    <label for="department" class="block font-medium">Departamento</label>
+    <select
+      id="department"
+      name="department"
+      required
+      class="w-full rounded border p-2"
+      [(ngModel)]="selectedDept"
+    >
+      <option value="">Seleccione un Departamento</option>
+      <option *ngFor="let dept of depts()" [value]="dept.id">
+        {{ dept.name }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Nombre de Categoría -->
+  <div>
+    <label for="categoryName" class="block font-medium">Nombre de Categoría</label>
+    <input
+      type="text"
+      id="categoryName"
+      name="categoryName"
+      [ngModel]="categoryName()"
+      (ngModelChange)="categoryName.set($event)"
+      required
+      class="w-full rounded border p-2"
+    />
+  </div>
+
+   <!-- Nombre del icono -->
+   <div>
+    <label for="categoryIcon" class="block font-medium">Icono de Categoría</label>
+    <input
+      type="text"
+      id="categoryIcon"
+      name="categoryIcon"
+      [ngModel]="categoryIcon()"
+      (ngModelChange)="categoryIcon.set($event)"
+      required
+      class="w-full rounded border p-2"
+    />
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="categoryForm.invalid"
+    class="rounded bg-green-600 py-2 px-4 text-white hover:bg-green-700"
+  >
+    Agregar Categoría
+  </button>
+</form>
