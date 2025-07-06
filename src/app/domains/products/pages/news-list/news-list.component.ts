@@ -11,22 +11,16 @@ import { CardComponent } from './card/card.component';
   templateUrl: './news-list.component.html',
 })
 export default class NewsListComponent implements OnInit {
- // news = signal<News[]>([]); //
-  //  Usamos signal para almacenar las noticias
   news: News[] = [];
-
-  private newsService = inject(NewsService); // Cambiado a NewsService
-
+  private newsService = inject(NewsService);
   ngOnInit() {
-    // Aquí estamos suscribiéndonos al servicio para obtener las noticias
      this.newsService.fetchNews().subscribe(newsList => {
-      this.news = newsList; // Asignamos las noticias al componente
+      this.news = newsList;
     });
   }
 
-  // Función trackBy para mejorar el rendimiento de *ngFor
   trackNews(index: number, newsItem: News): string {
-    return newsItem.id.toString();  // Usamos 'id' o cualquier identificador único de cada noticia como string
+    return newsItem.id.toString();
   }
 }
 

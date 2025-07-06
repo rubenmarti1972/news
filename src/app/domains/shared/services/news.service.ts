@@ -15,15 +15,15 @@ export class NewsService {
   private news: News[] = [];
   private newsSubject = new BehaviorSubject<News[]>(this.news);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener las noticias desde la URL
   fetchNews(): Observable<News[]> {
-    const url = `${this.newsUrl}?country=us&apiKey=${this.apiKey}`; // Aquí puedes personalizar la URL según tus necesidades
+    const url = `${this.newsUrl}?country=us&apiKey=${this.apiKey}`;
     return this.http.get<NewsApiResponse>(url).pipe(
       map(response => {
-        this.news = response.articles; // Asumiendo que la respuesta tiene una propiedad 'articles' con las noticias
-        this.newsSubject.next(this.news); // Actualizamos el estado de las noticias
+        this.news = response.articles;
+        this.newsSubject.next(this.news);
         return this.news;
       }),
       catchError(err => {
@@ -33,11 +33,10 @@ export class NewsService {
     );
   }
 
-  // Obtener una noticia por su slug
   getOneSlug(slug: string): Observable<News> {
     return this.newsSubject.asObservable().pipe(
       map((news: News[]) => {
-        const found = news.find(n => n.slug === slug); // Encontramos la noticia por su 'slug'
+        const found = news.find(n => n.slug === slug);
         if (!found) {
           throw new Error(`Noticia con slug "${slug}" no encontrada.`);
         }
@@ -46,9 +45,7 @@ export class NewsService {
     );
   }
 
-  // Obtener todas las noticias como un observable
   getNews(): Observable<News[]> {
-    return this.newsSubject.asObservable(); // Devuelve las noticias como un observable
+    return this.newsSubject.asObservable();
   }
 }
-

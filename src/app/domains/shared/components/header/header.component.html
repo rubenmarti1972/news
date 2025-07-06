@@ -1,8 +1,6 @@
 <nav>
   <div class="w-full flex items-center justify-between mx-auto py-4 bg-[#800000] text-white">
-    <!-- Logo Section -->
     <div class="flex items-center">
-      <!-- Menu Toggle for Mobile -->
       <button (click)="toggleMenu()" data-collapse-toggle="navbar-default" type="button"
         class="mr-4 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="navbar-default" aria-expanded="false">
@@ -13,15 +11,12 @@
         </svg>
       </button>
 
-      <!-- Logo Image with Red Color (light red) -->
       <a href="/" class="flex items-center mr-10">
         <img src="/assets/logo.png" class="h-16 filter hue-rotate-0 saturate-300" alt="Logo" />
       </a>
     </div>
 
-    <!-- Menu Section (Mobile and Desktop) -->
     <div class="md:flex items-center space-x-6 hidden md:block">
-      <!-- Menu for desktop (this part will be hidden on mobile) -->
       <ul class="flex space-x-6">
         <li>
           <a routerLink="/" routerLinkActive="underline" [routerLinkActiveOptions]="{ exact: true }"
@@ -40,7 +35,6 @@
           <a routerLink="/carga" routerLinkActive="underline" class="block hover:underline text-white">Art and Shows</a>
         </li>
       </ul>
-      <!-- Search Component -->
       <app-search />
     </div>
 
@@ -65,7 +59,6 @@
           <a routerLink="/carga" routerLinkActive="underline" class="block hover:underline text-white">Art and Shows</a>
         </li>
       </ul>
-      <!-- Search Component for mobile version -->
       <app-search />
     </div>
   </div>

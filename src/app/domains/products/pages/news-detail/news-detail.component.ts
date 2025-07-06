@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { NewsService } from '@shared/services/news.service';// Si se usa en tu caso
+import { NewsService } from '@shared/services/news.service';
 import type { News } from '@shared/models/news.model';
 
 @Component({

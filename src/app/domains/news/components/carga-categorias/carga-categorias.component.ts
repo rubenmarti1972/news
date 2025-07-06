@@ -13,36 +13,27 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, FormsModule],
   templateUrl: './carga-categorias.html',
 })
-export class CargaCategoriasComponent
-//export class CargaCategoriasComponent implements OnInit
+export class CargaCategoriasComponent {
 
- {
-
- /* ngOnInit(){
-  localStorage.clear();
-  } */
-  // Signal para el nombre de la categoría
+  /* ngOnInit(){
+   localStorage.clear();
+   } */
   categoryName = signal<string>('');
   categoryIcon = signal<string>('');
-
-  // Signal para almacenar el listado de departamentos
   depts = signal<Department[]>([]);
-
-  // Signal para el departamento seleccionado
   selectedDepartmentId = signal<number | null>(null);
 
   constructor(
     private categoryService: CategoryService,
     private departmentService: DepartmentService
   ) {
-    // Suscribirse al servicio de departamentos y actualizar el signal
     this.departmentService.getDepartments().subscribe((departments) => {
       this.depts.set(departments);
       console.log('Departamentos disponibles:', departments);
     });
   }
 
-  // Getter y setter para usar en two-way binding
+
   get selectedDept(): number | null {
     return this.selectedDepartmentId();
   }
@@ -58,20 +49,16 @@ export class CargaCategoriasComponent
       return;
     }
     const slug = name.toLowerCase().trim().replace(/\s+/g, '-');
-
     const newCategory: Category = {
-      id: 0,          // Se genera en el servicio o se asigna según convenga
+      id: 0,
       name: name,
-      image: '',      // Puedes agregar una imagen si es necesario
+      image: '',
       slug: slug,
       departmentId: this.selectedDepartmentId() as number,
-      icon:this.categoryIcon().trim()
+      icon: this.categoryIcon().trim()
     };
     console.log('➡️ Nueva categoría a enviar:', newCategory);
-
     this.categoryService.addCategory(newCategory);
-
-    // Reinicia los valores
     this.categoryName.set('');
     this.categoryIcon.set('');
     this.selectedDepartmentId.set(null);
